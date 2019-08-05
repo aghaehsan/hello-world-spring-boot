@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
+  - source: target/*.jar
     destination: /home/ec2-user/server
 
 permissions:
@@ -12,6 +12,10 @@ permissions:
     group: ec2-user
 
 hooks:
+  BeforeInstall:
+    - location: scripts/cleanup.sh
+      timeout: 30
+      runas: ec2-user
   ApplicationStop:
     - location: scripts/server_stop.sh
       timeout: 20
