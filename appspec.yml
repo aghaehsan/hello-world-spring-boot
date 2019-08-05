@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
+  - source: target/myproject-0.0.1-SNAPSHOT.jar
     destination: /home/ec2-user/server
 
 permissions:
