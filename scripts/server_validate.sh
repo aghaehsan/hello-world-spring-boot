@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -e
 while [ true ]
 do
     if [ "$(curl -s http://localhost:80/health)" = '{"status":"UP"}' ]
