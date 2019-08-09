@@ -18,8 +18,11 @@ pipeline {
         stage('build ami with packer'){
             steps{
                 //required Pipeline: AWS Steps Jenkins Plugin
-                withAWS(credentials: 'cicd', region: 'us-east-1') {                     
-                     sh 'packer build -var script_A=machineImages/installCodeDeploy -var script_B=machineImages/installTomcat machineImages/createImage.json'
+                dir('machineImages') {
+   			 sh "pwd"
+		}
+		withAWS(credentials: 'cicd', region: 'us-east-1') {                     
+                     sh 'packer build createImage.json'
                 }
             }
 
