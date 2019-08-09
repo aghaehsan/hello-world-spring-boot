@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage('build'){
             steps{
-                sh 'mvn compile package'
+                sh "printenv | sort"
+		sh 'mvn compile package'
             }
 
         }
