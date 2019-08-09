@@ -1,0 +1,41 @@
+{
+
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "source_ami": "ami-0b898040803850657"
+   },
+    
+    "builders": [
+        {
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "type": "amazon-ebs",
+            "region": "us-east-1",
+            "source_ami": "{{ source_ami} }",
+            "instance_type": "t2.micro",
+            "ssh_username": "ec2-user",
+            "ami_name": "FrontEnd-{{isotime | clean_ami_name}}",
+            "ami_description": "Amazon AMI Golden Image",
+            "tags": {
+                "owner": "ehsan"
+            },
+            "run_tags": {
+                "role": "buildsystem"
+            }
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "installCodeDeploy.sh"
+        },
+	 {
+            "type": "shell",
+            "script": "installTomcat.sh"
+        }
+    ]
+
+
+}
+
