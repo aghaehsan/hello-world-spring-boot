@@ -3,7 +3,7 @@
   "variables": {
     "my_source_ami": "ami-0b898040803850657",
     "region": "us-east-1",
-    "uuid": "",
+    "uuid": ""
    },
     
     "builders": [
@@ -17,7 +17,7 @@
             "ami_description": "Amazon AMI Golden Image",
             "tags": {
                 "owner": "ehsan",
-                "uuid": "{{ user `uuid` }}
+                "uuid": "{{ user `uuid` }}"
             },
             "run_tags": {
                 "role": "buildsystem"
