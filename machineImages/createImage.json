@@ -1,14 +1,15 @@
 {
+
   "variables": {
-    "source_ami": "ami-0b898040803850657",
+    "my_source_ami": "ami-0b898040803850657",
     "region": "us-east-1"
    },
     
     "builders": [
         {
             "type": "amazon-ebs",
-            "region": "{{region}}",
-            "source_ami": "{{source_ami}}",
+            "region": "{{ user `region` }}",
+            "source_ami": "{{ user `my_source_ami` }}",
             "instance_type": "t2.micro",
             "ssh_username": "ec2-user",
             "ami_name": "FrontEnd-{{isotime | clean_ami_name}}",
