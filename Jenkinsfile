@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+	SUITE_RUN_ID = UUID.randomUUID().toString()
+    }
     agent {
         label 'docker-node'
     }
