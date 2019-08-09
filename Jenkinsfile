@@ -33,7 +33,7 @@ pipeline {
                 //required Pipeline: AWS Steps Jenkins Plugin
                 withAWS(credentials: 'cicd', region: 'us-east-1') {    
                     sh 'terraform init'               
-                     sh 'terraform apply -var uuid=${RUN_ID}'
+                     sh 'terraform apply -var uuid=${RUN_ID} -auto-approve'
                 }
             }
 
