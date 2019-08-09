@@ -1,6 +1,6 @@
 pipeline {
     environment {
-	SUITE_RUN_ID = UUID.randomUUID().toString()
+        RUN_ID = UUID.randomUUID().toString()
     }
     agent {
         label 'docker-node'
@@ -8,8 +8,7 @@ pipeline {
     stages {
         stage('build'){
             steps{
-                sh "printenv | sort"
-		sh 'mvn compile package'
+                sh 'mvn compile package'
             }
 
         }
@@ -26,7 +25,7 @@ pipeline {
                     dir('machineImages') {
                          sh 'pwd'
                     }                 
-                     sh 'packer build ./createImage.json'
+                     sh 'packer build -var uuid=${RUN_ID} createImage.json'
                 }
             }
 
