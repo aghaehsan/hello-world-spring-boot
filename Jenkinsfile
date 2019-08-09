@@ -16,9 +16,11 @@ pipeline {
 
         }
         stage('build ami with packer'){
+	   steps {
 		withAWS(credentials: 'cicd', region: 'us-east-1') {
     			sh 'aws iam get-user'
 		}
+	  }
         }
     }
 }
