@@ -21,11 +21,18 @@ pipeline {
         stage('build ami with packer'){
             steps{
                 //required Pipeline: AWS Steps Jenkins Plugin
-                withAWS(credentials: 'cicd', region: 'us-east-1') {    
-                    dir('machineImages') {
-                         sh 'pwd'
-                    }                 
+                withAWS(credentials: 'cicd', region: 'us-east-1') {                   
                      sh 'packer build -var uuid=${RUN_ID} createImage.json'
+                }
+            }
+
+        }
+
+        stage('provision machines'){
+            steps{
+                //required Pipeline: AWS Steps Jenkins Plugin
+                withAWS(credentials: 'cicd', region: 'us-east-1') {                   
+                     sh 'terraform apply -var uuid=${RUN_ID}'
                 }
             }
 
