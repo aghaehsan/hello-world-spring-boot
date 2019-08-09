@@ -18,10 +18,10 @@ pipeline {
         stage('build ami with packer'){
             steps{
                 //required Pipeline: AWS Steps Jenkins Plugin
-                dir('machineImages') {
-   			 sh "pwd"
-		}
-		withAWS(credentials: 'cicd', region: 'us-east-1') {                     
+                withAWS(credentials: 'cicd', region: 'us-east-1') {    
+                    dir('machineImages') {
+                         sh 'pwd'
+                    }                 
                      sh 'packer build createImage.json'
                 }
             }
