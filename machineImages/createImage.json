@@ -27,11 +27,11 @@
     "provisioners": [
         {
             "type": "shell",
-            "script": "{{ user `script_A.sh` }}"
+            "script": "installCodeDeploy.sh"
         },
 	 {
             "type": "shell",
-            "script": "{{ user `script_B.sh` }}"
+            "script": "installTomcat.sh"
         }
     ]
 
