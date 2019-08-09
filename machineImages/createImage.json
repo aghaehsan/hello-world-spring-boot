@@ -2,7 +2,7 @@
 
   "variables": {
     "my_source_ami": "ami-0b898040803850657",
-    "region": "us-east-1"
+    "region": "us-east-1",
     "script_A": "installCodeDeploy.sh",
     "script_B": "installTomcat.sh"
    },
