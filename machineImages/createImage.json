@@ -3,6 +3,8 @@
   "variables": {
     "my_source_ami": "ami-0b898040803850657",
     "region": "us-east-1"
+    "script_A": "installCodeDeploy.sh",
+    "script_B": "installTomcat.sh"
    },
     
     "builders": [
@@ -25,11 +27,11 @@
     "provisioners": [
         {
             "type": "shell",
-            "script": "installCodeDeploy.sh"
+            "script": "{{ user `script_A.sh` }}"
         },
 	 {
             "type": "shell",
-            "script": "installTomcat.sh"
+            "script": "{{ user `script_B.sh` }}"
         }
     ]
 
