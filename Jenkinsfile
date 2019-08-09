@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build'){
             steps{
-                'sh' mvn compile package
+                'sh' mvn compile 
             }
 
         }
