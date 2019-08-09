@@ -19,7 +19,7 @@ pipeline {
             steps{
                 //required Pipeline: AWS Steps Jenkins Plugin
                 withAWS(credentials: 'cicd', region: 'us-east-1') {
-                     sh 'packer -build machineImages/createImage.json'
+                     sh 'packer build machineImages/createImage.json'
                 }
             }
 
