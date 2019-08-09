@@ -1,6 +1,6 @@
 {
   "variables": {
-    "source_ami": "ami-0b898040803850657"
+    "source_ami": "ami-0b898040803850657",
     "region": "us-east-1"
    },
     
