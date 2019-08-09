@@ -22,7 +22,7 @@ pipeline {
                     dir('machineImages') {
                          sh 'pwd'
                     }                 
-                     sh 'packer build createImage.json'
+                     sh 'packer build ./createImage.json'
                 }
             }
 
