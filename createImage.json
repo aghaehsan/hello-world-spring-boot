@@ -27,11 +27,11 @@
     "provisioners": [
         {
             "type": "shell",
-            "script": "installCodeDeploy.sh"
+            "script": "provScripts/installCodeDeploy.sh"
         },
 	 {
             "type": "shell",
-            "script": "installTomcat.sh"
+            "script": "provScripts/installTomcat.sh"
         }
     ]
 
