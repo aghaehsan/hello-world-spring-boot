@@ -9,6 +9,7 @@ pipeline {
         stage('build'){
             steps{
                 sh 'mvn compile package'
+                stash includes: 'target/*.war', name: 'builtSources'
             }
 
         }
@@ -21,6 +22,7 @@ pipeline {
 
         stage('build ami with packer'){
             steps{
+                unstash 'builtSources'
                 //required Pipeline: AWS Steps Jenkins Plugin
                 sh 'echo ${env.WORKSPACE}'
                 withAWS(credentials: 'cicd', region: 'us-east-1') {                   
