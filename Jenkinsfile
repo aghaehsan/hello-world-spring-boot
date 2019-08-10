@@ -22,7 +22,7 @@ pipeline {
         stage ('upload war to S3'){
             steps {
                 withAWS(credentials: 'cicd', region: 'us-east-1') {    
-                   s3Upload(bucket: 'ehsanz-bucket', workingDir:'target', includePathPattern:'**/*');
+                   s3Upload acl: 'Private', bucket: 'ehsanz-bucket', file: 'target/myproject-0.0.1-SNAPSHOT.jar'
                 }
             }
         }
