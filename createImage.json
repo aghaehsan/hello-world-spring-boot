@@ -31,7 +31,7 @@
         },
 	    {
             "type":        "file",
-            "source":      "target/*.war",
+            "source":      "*.war",
             "destination": "/tmp/"
         },
         {
