@@ -22,7 +22,8 @@ pipeline {
         stage ('upload war to S3'){
             steps {
                 withAWS(credentials: 'cicd', region: 'us-east-1') {    
-                    s3Upload(bucket: "ehsanz-bucket", includePathPattern: "target/*.jar", path: "/")
+                    
+                    s3Upload(file: 'target/myproject-0.0.1-SNAPSHOT.jar, bucket: ehsanz-bucket, path: "/"
                 }
             }
         }
