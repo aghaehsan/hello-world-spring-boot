@@ -22,6 +22,7 @@ pipeline {
         stage('build ami with packer'){
             steps{
                 //required Pipeline: AWS Steps Jenkins Plugin
+                sh 'echo ${env.WORKSPACE}'
                 withAWS(credentials: 'cicd', region: 'us-east-1') {                   
                      sh 'packer build -var uuid=${RUN_ID} createImage.json'
                 }
