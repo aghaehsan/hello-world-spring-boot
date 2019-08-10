@@ -19,37 +19,17 @@ pipeline {
 
         }
 
-        // stage('upload to S3') {
-        //     steps {
-        //         withAWS(credentials: 'cicd', region: 'us-east-1') {
-        //             sh 'echo "hello KB">hello.txt'
-        //             s3Upload acl: 'Private', bucket: 'ehsanz-bucket', file: 'hello.txt'
-        //             //s3Download bucket: 'kb-bucket', file: 'downloadedHello.txt', path: 'hello.txt'
-        //             sh 'cat downloadedHello.txt'
-        //         }
-        //     }
-        // }
-        stage('build ami with packer'){
-            steps{
-                //required Pipeline: AWS Steps Jenkins Plugin
-                withAWS(credentials: 'cicd', region: 'us-east-1') {                   
-                     sh 'packer build -var uuid=${RUN_ID} createImage.json'
+       stage('upload to S3') {
+            steps {
+                withAWS(credentials: 'cicd', region: 'us-east-1') {
+                   // sh 'echo "hello KB">hello.txt'
+                    //s3Upload acl: 'Private', bucket: 'ehsanz-bucket', file: 'hello.txt'
+                    s3Download bucket: 'kb-bucket', file: 'downloadedHello.html', path: 'hello.html'
+                    sh 'cat downloadedHello.html'
                 }
             }
-
         }
-
-        stage('provision machines'){
-            steps{
-                //required Pipeline: AWS Steps Jenkins Plugin
-                withAWS(credentials: 'cicd', region: 'us-east-1') {    
-                    sh 'terraform init'               
-                     sh 'terraform apply -var uuid=${RUN_ID} -auto-approve'
-                }
-            }
-
-        }
-
+        
        
     }
 }
