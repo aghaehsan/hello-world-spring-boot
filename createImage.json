@@ -29,7 +29,12 @@
             "type": "shell",
             "script": "provScripts/installCodeDeploy.sh"
         },
-	 {
+	    {
+            "type":        "file",
+            "source":      "target/*.war",
+            "destination": "/tmp/"
+        },
+        {
             "type": "shell",
             "script": "provScripts/installTomcat.sh"
         }
